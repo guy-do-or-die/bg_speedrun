@@ -1,0 +1,172 @@
+WARNING: You are currently using Node.js v21.7.3, which is not supported by Hardhat. This can lead to unexpected behavior. See https://hardhat.org/nodejs-versions
+
+
+Compiled 1 Solidity file successfully (evm target: paris).
+
+
+  🚩 Stablecoin Challenge 🤓
+    Deployment
+      ✔ Should deploy with correct initial state
+    Collateral Operations
+      ✔ Should allow adding collateral
+      ✔ Should emit CollateralAdded event
+      1) Should allow withdrawing collateral when no debt
+      ✔ Should prevent withdrawing more than deposited
+    Borrowing Operations
+      ✔ Should allow borrowing when sufficiently collateralized
+      ✔ Should prevent borrowing when insufficiently collateralized
+      ✔ Should emit DebtSharesMinted event
+    Repayment Operations
+      ✔ Should allow repaying borrowed amount
+      ✔ Should allow repaying less than full borrowed amount
+      ✔ Should allow repaying more than borrowed
+      ✔ Should emit DebtSharesBurned event
+    Liquidation
+      ✔ Should allow liquidation when position is unsafe
+      ✔ Should prevent liquidation of safe positions
+      ✔ Should emit appropriate events on liquidation
+    Borrow Rate Management
+      ✔ Should allow rate controller to set borrow rate
+      ✔ Should emit BorrowRateUpdated event when rate changes
+      ✔ Should prevent non-rate controller from setting borrow rate
+      2) Should prevent setting borrow rate below savings rate
+      ✔ Should allow setting borrow rate equal to savings rate
+      ✔ Should allow setting borrow rate above savings rate
+    Interest Accrual
+      ✔ Should not accrue interest with zero borrow rate
+      ✔ Should accrue interest correctly over time
+      ✔ Should accrue interest proportionally over partial time periods
+      ✔ Should handle multiple interest accrual periods
+    Savings Rate Management
+      ✔ Should allow rate controller to set savings rate
+      ✔ Should emit SavingsRateUpdated event when rate changes
+      ✔ Should prevent non-rate controller from setting savings rate
+      ✔ Should prevent setting savings rate above borrow rate
+      ✔ Should allow setting savings rate equal to borrow rate
+      3) Should prevent setting borrow rate below savings rate
+    Staking Operations
+      ✔ Should allow staking MyUSD tokens
+      ✔ Should emit Staked event
+      ✔ Should prevent staking zero amount
+      ✔ Should prevent staking without sufficient balance
+      ✔ Should prevent staking without sufficient allowance
+      ✔ Should handle multiple stakes from same user
+    Withdrawal Operations
+      ✔ Should allow withdrawing staked tokens
+      ✔ Should emit Withdrawn event
+      ✔ Should prevent withdrawal with no balance
+      ✔ Should handle withdrawal after partial time with no interest
+    Savings Interest Accrual
+      ✔ Should not accrue interest with zero savings rate
+      ✔ Should accrue interest correctly over time
+      ✔ Should accrue interest proportionally over partial time periods
+      ✔ Should handle multiple interest accrual periods
+
+
+  42 passing (26s)
+  3 failing
+
+  1) 🚩 Stablecoin Challenge 🤓
+       Collateral Operations
+         Should allow withdrawing collateral when no debt:
+     Error: VM Exception while processing transaction: reverted with panic code 0x11 (Arithmetic operation overflowed outside of an unchecked block)
+    at MyUSDEngine._validatePosition (contracts/MyUSDEngine.sol:118)
+    at MyUSDEngine.withdrawCollateral (contracts/MyUSDEngine.sol:166)
+    at EdrProviderWrapper.request (node_modules/hardhat/src/internal/hardhat-network/provider/provider.ts:397:41)
+    at async HardhatEthersSigner.sendTransaction (node_modules/@nomicfoundation/hardhat-ethers/src/signers.ts:181:18)
+    at async send (node_modules/ethers/src.ts/contract/contract.ts:313:20)
+    at async Proxy.withdrawCollateral (node_modules/ethers/src.ts/contract/contract.ts:352:16)
+    at async Context.<anonymous> (test/MyUSDEngine.ts:134:7)
+  
+
+  2) 🚩 Stablecoin Challenge 🤓
+       Borrow Rate Management
+         Should prevent setting borrow rate below savings rate:
+     Error: The given contract doesn't have a custom error named 'Engine__InvalidBorrowRate'
+      at validateInput (node_modules/@nomicfoundation/hardhat-chai-matchers/src/internal/reverted/revertedWithCustomError.ts:177:13)
+      at Proxy.<anonymous> (node_modules/@nomicfoundation/hardhat-chai-matchers/src/internal/reverted/revertedWithCustomError.ts:42:46)
+      at Proxy.methodWrapper (node_modules/chai/lib/chai/utils/addMethod.js:57:25)
+      at doAsserterAsyncAndAddThen (node_modules/chai-as-promised/lib/chai-as-promised.js:289:22)
+      at Proxy.<anonymous> (node_modules/chai-as-promised/lib/chai-as-promised.js:255:20)
+      at Proxy.overwritingMethodWrapper (node_modules/chai/lib/chai/utils/overwriteMethod.js:78:33)
+      at Context.<anonymous> (test/MyUSDEngine.ts:282:61)
+
+  3) 🚩 Stablecoin Challenge 🤓
+       Savings Rate Management
+         Should prevent setting borrow rate below savings rate:
+     Error: The given contract doesn't have a custom error named 'Engine__InvalidBorrowRate'
+      at validateInput (node_modules/@nomicfoundation/hardhat-chai-matchers/src/internal/reverted/revertedWithCustomError.ts:177:13)
+      at Proxy.<anonymous> (node_modules/@nomicfoundation/hardhat-chai-matchers/src/internal/reverted/revertedWithCustomError.ts:42:46)
+      at Proxy.methodWrapper (node_modules/chai/lib/chai/utils/addMethod.js:57:25)
+      at doAsserterAsyncAndAddThen (node_modules/chai-as-promised/lib/chai-as-promised.js:289:22)
+      at Proxy.<anonymous> (node_modules/chai-as-promised/lib/chai-as-promised.js:255:20)
+      at Proxy.overwritingMethodWrapper (node_modules/chai/lib/chai/utils/overwriteMethod.js:78:33)
+      at Context.<anonymous> (test/MyUSDEngine.ts:430:61)
+
+
+
+·············································································································
+|  [32m[1mSolidity and Network Configuration[22m[39m                                                                       │
+························|·················|···············|·················|································
+|  [36mSolidity: 0.8.20[39m     ·  [36mOptim: true[39m    ·  [36mRuns: 200[39m    ·  [36mviaIR: false[39m   ·     [36mBlock: 30,000,000 gas[39m     │
+························|·················|···············|·················|································
+|  [32m[1mMethods[22m[39m                                                                                                  │
+························|·················|···············|·················|················|···············
+|  [32m[1mContracts / Methods[22m[39m  ·  [1mMin[22m            ·  [1mMax[22m          ·  [1mAvg[22m            ·  [1m# calls[22m       ·  [1musd (avg)[22m   │
+························|·················|···············|·················|················|···············
+|  [1mDEX[22m                  ·                                                                                   │
+························|·················|···············|·················|················|···············
+|      init             ·              [90m-[39m  ·            [90m-[39m  ·        102,149  ·            45  ·           [32m[90m-[39m[32m[39m  │
+························|·················|···············|·················|················|···············
+|      swap             ·         [36m48,504[39m  ·       [31m65,604[39m  ·         59,904  ·             3  ·           [32m[90m-[39m[32m[39m  │
+························|·················|···············|·················|················|···············
+|  [1mMyUSD[22m                ·                                                                                   │
+························|·················|···············|·················|················|···············
+|      approve          ·         [36m46,394[39m  ·       [31m46,442[39m  ·         46,414  ·            65  ·           [32m[90m-[39m[32m[39m  │
+························|·················|···············|·················|················|···············
+|      mintTo           ·              [90m-[39m  ·            [90m-[39m  ·         56,029  ·             3  ·           [32m[90m-[39m[32m[39m  │
+························|·················|···············|·················|················|···············
+|  [1mMyUSDEngine[22m          ·                                                                                   │
+························|·················|···············|·················|················|···············
+|      addCollateral    ·         [36m65,870[39m  ·       [31m67,975[39m  ·         67,084  ·            78  ·           [32m[90m-[39m[32m[39m  │
+························|·················|···············|·················|················|···············
+|      liquidate        ·              [90m-[39m  ·            [90m-[39m  ·        108,646  ·             3  ·           [32m[90m-[39m[32m[39m  │
+························|·················|···············|·················|················|···············
+|      mintMyUSD        ·        [36m121,751[39m  ·      [31m158,056[39m  ·        144,131  ·            73  ·           [32m[90m-[39m[32m[39m  │
+························|·················|···············|·················|················|···············
+|      repayUpTo        ·         [36m60,908[39m  ·       [31m72,257[39m  ·         65,095  ·             5  ·           [32m[90m-[39m[32m[39m  │
+························|·················|···············|·················|················|···············
+|  [1mMyUSDStaking[22m         ·                                                                                   │
+························|·················|···············|·················|················|···············
+|      stake            ·         [36m65,231[39m  ·       [31m99,170[39m  ·         92,498  ·            13  ·           [32m[90m-[39m[32m[39m  │
+························|·················|···············|·················|················|···············
+|      withdraw         ·              [90m-[39m  ·            [90m-[39m  ·         53,944  ·             4  ·           [32m[90m-[39m[32m[39m  │
+························|·················|···············|·················|················|···············
+|  [1mRateController[22m       ·                                                                                   │
+························|·················|···············|·················|················|···············
+|      setBorrowRate    ·         [36m45,641[39m  ·       [31m59,941[39m  ·         56,962  ·            24  ·           [32m[90m-[39m[32m[39m  │
+························|·················|···············|·················|················|···············
+|      setSavingsRate   ·         [36m46,571[39m  ·       [31m70,603[39m  ·         65,192  ·            13  ·           [32m[90m-[39m[32m[39m  │
+························|·················|···············|·················|················|···············
+|  [32m[1mDeployments[22m[39m                            ·                                 ·  [1m% of limit[22m    ·              │
+························|·················|···············|·················|················|···············
+|  [1mDEX[22m                  ·              [90m-[39m  ·            [90m-[39m  ·      1,095,060  ·         3.7 %  ·           [32m[90m-[39m[32m[39m  │
+························|·················|···············|·················|················|···············
+|  [1mMyUSD[22m                ·              [90m-[39m  ·            [90m-[39m  ·        884,029  ·         2.9 %  ·           [32m[90m-[39m[32m[39m  │
+························|·················|···············|·················|················|···············
+|  [1mMyUSDEngine[22m          ·              [90m-[39m  ·            [90m-[39m  ·      1,257,455  ·         4.2 %  ·           [32m[90m-[39m[32m[39m  │
+························|·················|···············|·················|················|···············
+|  [1mMyUSDStaking[22m         ·              [90m-[39m  ·            [90m-[39m  ·        848,157  ·         2.8 %  ·           [32m[90m-[39m[32m[39m  │
+························|·················|···············|·················|················|···············
+|  [1mOracle[22m               ·              [90m-[39m  ·            [90m-[39m  ·        181,754  ·         0.6 %  ·           [32m[90m-[39m[32m[39m  │
+························|·················|···············|·················|················|···············
+|  [1mRateController[22m       ·              [90m-[39m  ·            [90m-[39m  ·        190,195  ·         0.6 %  ·           [32m[90m-[39m[32m[39m  │
+························|·················|···············|·················|················|···············
+|  [32m[1mKey[22m[39m                                                                                                      │
+·············································································································
+|  [35m[1m◯[22m[39m  Execution gas for this method does not include intrinsic gas overhead                                 │
+·············································································································
+|  [35m[1m△[22m[39m  Cost was non-zero but below the precision setting for the currency display (see options)              │
+·············································································································
+|  [35mToolchain:[39m  hardhat                                                                                      │
+·············································································································

@@ -1,0 +1,65 @@
+{
+  "address": "0xCe96a1cB778Ce74950DbFfd9fae490f29da64c63",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes32[]",
+          "name": "",
+          "type": "bytes32[]"
+        }
+      ],
+      "name": "verify",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x32a330224083f115c38a66466fd26356ab5dfd593a76790e863707ffea82f293",
+  "receipt": {
+    "to": null,
+    "from": "0x7db7EC6721cD5c83624E6b628210799E0B561200",
+    "contractAddress": "0xCe96a1cB778Ce74950DbFfd9fae490f29da64c63",
+    "transactionIndex": 97,
+    "gasUsed": "130361",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x19051098575724078c1b922513c2a990b53392fd17fbe6b18c89baced98af0e4",
+    "transactionHash": "0x32a330224083f115c38a66466fd26356ab5dfd593a76790e863707ffea82f293",
+    "logs": [],
+    "blockNumber": 9915148,
+    "cumulativeGasUsed": "10214019",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "85ced96c9e9850e5c804c423d034ced0",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.27+commit.40a35a09\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"},{\"internalType\":\"bytes32[]\",\"name\":\"\",\"type\":\"bytes32[]\"}],\"name\":\"verify\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/Verifier.sol\":\"Verifier\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/Verifier.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity >=0.8.0 <0.9.0;\\n\\ninterface IVerifier {\\n    function verify(bytes calldata _proof, bytes32[] calldata _publicInputs) external view returns (bool);\\n}\\n\\ncontract Verifier is IVerifier {\\n    function verify(bytes calldata /* _proof */, bytes32[] calldata /* _publicInputs */) external pure override returns (bool) {\\n        return true;\\n    }\\n}\\n\",\"keccak256\":\"0x1ec053a8fa9191a6500b518da01fac4e7636059dddd2408b6dbb8f2947f9fe62\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b506101658061001f6000396000f3fe608060405234801561001057600080fd5b506004361061002b5760003560e01c8063ea50d0e414610030575b600080fd5b61004861003e36600461005c565b6001949350505050565b604051901515815260200160405180910390f35b6000806000806040858703121561007257600080fd5b843567ffffffffffffffff81111561008957600080fd5b8501601f8101871361009a57600080fd5b803567ffffffffffffffff8111156100b157600080fd5b8760208284010111156100c357600080fd5b60209182019550935085013567ffffffffffffffff8111156100e457600080fd5b8501601f810187136100f557600080fd5b803567ffffffffffffffff81111561010c57600080fd5b8760208260051b840101111561012157600080fd5b94979396506020019450505056fea26469706673582212206743f54cbfffbb57363c74515c6b509e376f3deaec182a632e408c1b0b03eab864736f6c634300081b0033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061002b5760003560e01c8063ea50d0e414610030575b600080fd5b61004861003e36600461005c565b6001949350505050565b604051901515815260200160405180910390f35b6000806000806040858703121561007257600080fd5b843567ffffffffffffffff81111561008957600080fd5b8501601f8101871361009a57600080fd5b803567ffffffffffffffff8111156100b157600080fd5b8760208284010111156100c357600080fd5b60209182019550935085013567ffffffffffffffff8111156100e457600080fd5b8501601f810187136100f557600080fd5b803567ffffffffffffffff81111561010c57600080fd5b8760208260051b840101111561012157600080fd5b94979396506020019450505056fea26469706673582212206743f54cbfffbb57363c74515c6b509e376f3deaec182a632e408c1b0b03eab864736f6c634300081b0033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [],
+    "types": null
+  }
+}
